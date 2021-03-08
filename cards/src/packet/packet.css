@@ -1,0 +1,75 @@
+.body{
+    margin-top: 100px;
+    
+}
+div#text{
+    
+    font-family: Heebo;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 53px;
+color: #CA7E00;
+margin-bottom: 50px;
+}
+
+div#arrow{
+    position: absolute;
+    left: 750.22px;
+    top: 147.86px;
+    
+}
+.opener {
+    width: 215px;
+    height: 35px;
+    margin-left: 270px;
+    margin-top: 60px;
+  }
+
+.opener:hover{
+    margin-bottom: 9.5px;
+    -ms-transform: rotate(-8deg); /* IE 9 */
+    transform: rotate(-8deg); /* Standard syntax */
+    transition-duration: 0.8s;
+    position: inherit;
+    
+}
+
+/*.peeping-cards{
+    height: 20px;
+    width: 200px;
+    margin-left: 125px;
+    
+}
+
+.peeping-cards:hover{
+    height: 20px;
+    width: 200px;
+    margin-left: 125px;
+}
+*/
+.cards-packet{
+    margin: 250px;
+    margin-top: 31px;
+    margin-left: 270px;
+    width: 215px;
+    height: 200px;
+    /*background-color: rgb(3, 3, 32);
+    color: floralwhite;*/
+}
+
+.cards-packet:hover{
+    cursor: pointer;
+    
+}
+
+.cards-packet:active{
+    /*transform-style: preserve-3d;
+    background-color: gainsboro;
+    color: rgb(39, 16, 77);*/
+    text-decoration: none;
+}
+
+.spread-cards{
+    width: auto;
+}
