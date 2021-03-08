@@ -4,15 +4,14 @@ import opener from '../assets/opener.png';
 import box from '../assets/box.png'
 import arrow from '../assets/Arrow 1.png';
 import Spreadcards from '../cardsSpread';
-import './hide';
+//import './hide';
 
 function Packet (){
     return (
-        <>        
-        <div class="body">
-            
-        
-
+        <>       
+        <center>
+        <div class="container">
+    
         <center><div id="text">Click to open your first packet!</div></center>
         <div id="arrow">
             <img src={arrow} class="arrow" alt="pointer" />
@@ -36,9 +35,11 @@ function Packet (){
         <center><img src={cards} /></center>
         </div> */}
 
-        <Spreadcards />
+        
 
         </div>
+        <Spreadcards />
+        </center> 
         </>
     );
 }

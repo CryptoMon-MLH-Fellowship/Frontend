@@ -4,7 +4,7 @@ import './cards.css';
 import card1 from '../assets/spread-cards/Frame 6.png';
 import card2 from '../assets/spread-cards/image 14.png';
 import card3 from '../assets/spread-cards/image 15.png';
-
+import cardrow from '../assets/spread-cards/Group 8.png';
 
 function Cards (){
     return (
@@ -26,7 +26,14 @@ function Cards (){
         <div id="card">
             <img src={card3} alt="card-3"/>
         </div>
+        
 
+    </div>
+
+    <div class="spread-cards">
+    <div id="card-row">
+            <img src={cardrow} alt="card-row" />
+        </div>
     </div>
 
         </>
