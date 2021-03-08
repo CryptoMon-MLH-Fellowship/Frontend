@@ -1,0 +1,9 @@
+.spread-cards{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#card{
+    margin: 33px;
+}

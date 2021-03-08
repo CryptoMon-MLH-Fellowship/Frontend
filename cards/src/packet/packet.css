@@ -21,13 +21,14 @@ div#arrow{
 }
 .opener {
     width: 215px;
-    height: 35px;
+    height: 45px;
     margin-left: 270px;
     margin-top: 60px;
+    margin-bottom: 5px;
   }
 
 .opener:hover{
-    margin-bottom: 9.5px;
+    margin-bottom: 8.5px;
     -ms-transform: rotate(-8deg); /* IE 9 */
     transform: rotate(-8deg); /* Standard syntax */
     transition-duration: 0.8s;
