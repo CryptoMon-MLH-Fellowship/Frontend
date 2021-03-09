@@ -1,0 +1,43 @@
+.level {
+  width: 160px;
+  height: 124px;
+  background: #FFC700;
+  border-radius: 8px;
+}
+
+.level__tag {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 47px;
+  /* identical to box height */
+  color: #FFFFFF;
+}
+
+.level__data {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 70px;
+  /* identical to box height */
+  color: #FFFFFF;
+
+}
+
+.level--won{
+  background: #3A67BC;
+}
+
+.level__tag--won{
+  color: #002B9D;
+}
+
+.level--lost{
+  background: #CF1D19;
+}
+
+.level__tag--lost{
+  color: #910302;
+}

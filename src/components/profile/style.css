@@ -1,0 +1,27 @@
+.profile{
+  width: 160px;
+  height: 160px;
+  background: #CFFF9B;
+  border-radius: 8px;
+}
+
+.profile__image{
+  width: 160px;
+  height: 160px;
+  object-fit: none;
+  object-position: -24px -48px;
+}
+
+.profile__name{
+  width: 160px;
+    height: 47px;
+    left: 213px;
+    background: #FFCD0C;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 47px;
+    color: #FFFFFF;
+    text-align: center;
+}

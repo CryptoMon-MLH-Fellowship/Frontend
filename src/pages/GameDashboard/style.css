@@ -1,7 +1,12 @@
 
 .column{
   background-color: #FFF756;
-  height:90vh;
+  height:auto;
   margin: 32px 15px;
   border-radius: 8px;
+}
+
+.column--nobg{
+  background-color: #fff75600;
+
 }
