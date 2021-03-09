@@ -1,8 +1,9 @@
-function myFunction() {
+function cardsDisplay() {
     var x = document.getElementById("spread-cards");
     if (x.style.display === "none") {
       x.style.display = "block";
-    } else {
+    } 
+    /*else {
       x.style.display = "none";
-    }
+}*/
   }

@@ -15,24 +15,32 @@ function Cards (){
             <img src={cards} alt="spread-cards" />
     </div>*/}
 
-        <div id="card">
-            <img src={card1} alt="selected-card"/>
+        <div class="card">
+            <span class="card__img">
+                <img src={card1} alt="selected-card"/>
+            </span> 
         </div>
 
-        <div id="card">
-            <img src={card2} alt="card-2"/>
+        <div class="card">
+            <span class="card__img">
+                <img src={card2} alt="card-2"/>
+            </span> 
         </div>
 
-        <div id="card">
-            <img src={card3} alt="card-3"/>
+        <div class="card">
+            <span class="card__img">
+                <img src={card3} alt="card-3"/>
+            </span>
         </div>
         
 
     </div>
 
     <div class="spread-cards">
-    <div id="card-row">
-            <img src={cardrow} alt="card-row" />
+        <div class="card-row">
+            <span class="card__img">
+                <img src={cardrow} alt="card-row" />
+            </span> 
         </div>
     </div>
 

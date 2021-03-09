@@ -4,7 +4,7 @@ import opener from '../assets/opener.png';
 import box from '../assets/box.png'
 import arrow from '../assets/Arrow 1.png';
 import Spreadcards from '../cardsSpread';
-//import './hide';
+import './hide';
 
 function Packet (){
     return (
@@ -25,20 +25,19 @@ function Packet (){
         <img src={peepingcards} class="peeping-cards" alt="cards-inside" />
 
     </div>*/}
-        <a href="spread-cards">
-        <div class="cards-packet">
+       
+        <div class="cards-packet" onclick="cardsDisplay()">
             <img src={box} class="cards-packet" alt="box-of-cards" />
         </div>
-        </a>
-
-        {/* <div id="spread-cards">
-        <center><img src={cards} /></center>
-        </div> */}
-
         
 
+       
         </div>
+
+        <div id="spread-cards">
         <Spreadcards />
+        </div>
+
         </center> 
         </>
     );
