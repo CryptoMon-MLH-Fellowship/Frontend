@@ -8,7 +8,7 @@ export const GameProvider = (props) => {
   const [userAvatar, setUserAvatar] = useState(Avatar)
   const [statistics, setStatistics] = useState({level:"00",won:"00",lost:"00"})
   const [cards, setCards] = useState([Cards,Cards,Cards,Cards,Cards,Cards])
-  const [readyBattle, setReadyBattle] = useState(false)
+  const [readyBattle, setReadyBattle] = useState(true)
   const [readyCard, setReadyCard] = useState(false)
 
   const openBattle = () => {
