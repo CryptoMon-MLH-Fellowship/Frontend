@@ -1,0 +1,84 @@
+.packet{
+    box-sizing: border-box;
+    box-sizing: content-box;
+    width: 800px;
+    background: #FFF756;
+    border-radius: 8px 8px 0px 8px;
+    align-items: center;
+    margin-top: 10px;
+    
+    margin-bottom: 100px;
+    background-blend-mode:color-burn;
+}
+.packet__text{
+    
+    font-family: Heebo;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 53px;
+color: #CA7E00;
+margin-bottom: 50px;
+}
+
+.packet__arrow{
+    position: absolute;
+    left: 750.22px;
+    /*top: 147.86px;*/
+    
+}
+.packet__opener {
+    width: 215px;
+    height: 5px;
+    /* margin-left: 270px; */
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
+
+.packet__opener:hover{
+    margin-bottom: 8%;
+    -ms-transform: rotate(-8deg); /* IE 9 */
+    transform: rotate(-8deg); /* Standard syntax */
+    
+    transition-duration: 0.8s;
+    position: inherit;
+    
+}
+
+/*.peeping-cards{
+    height: 20px;
+    width: 200px;
+    margin-left: 125px;
+    
+}
+.peeping-cards:hover{
+    height: 20px;
+    width: 200px;
+    margin-left: 125px;
+}
+*/
+.packet__cards-packet__img{
+    /*margin: 250px;*/
+    margin-top: 41px;
+    /*margin-left: 270px;*/
+    width: 215px;
+    height: 200px;
+    /*background-color: rgb(3, 3, 32);
+    color: floralwhite;*/
+}
+
+.packet__cards-packet__img:hover{
+    cursor: pointer;
+    
+}
+
+.packet__cards-packet__img:active{
+    /*transform-style: preserve-3d;
+    background-color: gainsboro;
+    color: rgb(39, 16, 77);*/
+    text-decoration: none;
+}
+
+.spread-cards{
+    width: auto;
+}

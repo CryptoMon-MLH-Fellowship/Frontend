@@ -7,6 +7,8 @@ import Cards from '../../components/cards/index'
 import SideNav from '../../components/SideNav/index'
 import {GameContext} from '../../context/GameContext'
 
+import CardsBox from '../../components/cardsBox/packet/index' 
+
 const GameDashboard = (prop) => {
     const value = useContext(GameContext)
     return (
@@ -25,6 +27,9 @@ const GameDashboard = (prop) => {
                 <Col className="column column--nobg" xs="2">
                     <SideNav/>
                 </Col>
+            </Row>
+            <Row>
+                <CardsBox />
             </Row>
         </Container>
     )
