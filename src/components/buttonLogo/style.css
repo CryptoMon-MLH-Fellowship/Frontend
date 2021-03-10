@@ -8,6 +8,15 @@
   height: 168px;
   background: #FF9F00;
   border-radius: 8px;
+  transition: 1s ease;
+}
+
+.button--active{
+  background: #FFF756;
+  border-radius: 8px;
+  width: 223px;
+  height: 192px;
+  margin-left: -64px;
 }
 
 .button__logo{

@@ -1,15 +1,18 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import BtnLogo from '../buttonLogo/index'
 import {Icon, InlineIcon} from '@iconify/react';
 import gameControllerRetroSolid from '@iconify/icons-teenyicons/game-controller-retro-solid';
 import swordFill from '@iconify/icons-ri/sword-fill';
 import './style.css'
+import {GameContext} from '../../context/GameContext'
 
 const Index = () => {
+    const value = useContext(GameContext)
+    
     return (
         <div className="sidenav d-flex flex-column justify-content-between">
             <div className="sidenav__buttons">
-                <BtnLogo>
+                <BtnLogo onClick={value.openBattle} readyBattle={value.readyBattle?true:false}>
                     <Icon
                         icon={gameControllerRetroSolid}
                         style={{
@@ -18,7 +21,7 @@ const Index = () => {
                     }}/>
                 </BtnLogo>
 
-                <BtnLogo>
+                <BtnLogo onClick={value.openBattle} readyBattle={value.readyCard?true:false}>
                     <Icon
                         icon={swordFill}
                         style={{
@@ -28,9 +31,15 @@ const Index = () => {
                 </BtnLogo>
             </div>
 
-            <div className="sidenav__counter d-flex flex-column align-items-center justify-content-center">
-                    <span className="counter__tag">Cards</span>
-                    <span className="counter__data">06</span>
+            <div
+                className="sidenav__counter d-flex flex-column align-items-center justify-content-center">
+                <span className="counter__tag">Cards</span>
+                <span className="counter__data">{value
+                        .cards
+                        .length.toLocaleString('en-US', {
+                            minimumIntegerDigits: 2,
+                            useGrouping: false
+                        })}</span>
             </div>
         </div>
     )

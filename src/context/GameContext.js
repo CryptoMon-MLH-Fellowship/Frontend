@@ -8,6 +8,14 @@ export const GameProvider = (props) => {
   const [userAvatar, setUserAvatar] = useState(Avatar)
   const [statistics, setStatistics] = useState({level:"00",won:"00",lost:"00"})
   const [cards, setCards] = useState([Cards,Cards,Cards,Cards,Cards,Cards])
+  const [readyBattle, setReadyBattle] = useState(false)
+  const [readyCard, setReadyCard] = useState(false)
+
+  const openBattle = () => {
+    console.log(readyBattle);
+    readyBattle?setReadyCard(true):setReadyCard(false)
+    return readyBattle?setReadyBattle(false):setReadyBattle(true)
+  } 
 
   return (
     <GameContext.Provider 
@@ -15,7 +23,10 @@ export const GameProvider = (props) => {
       statistics:[statistics, setStatistics],
       username:username,
       userAvatar:userAvatar,
-      cards
+      cards,
+      openBattle,
+      readyBattle,
+      readyCard
     }
     }
     >
