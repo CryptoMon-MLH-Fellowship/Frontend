@@ -4,6 +4,7 @@ import './style.css'
 import Avatar from '../../components/profile/index'
 import Statistics from '../../components/statistics/index'
 import Cards from '../../components/cards/index'
+import Player from '../../components/players/index'
 import SideNav from '../../components/SideNav/index'
 import {GameContext} from '../../context/GameContext'
 
@@ -21,7 +22,7 @@ const GameDashboard = (prop) => {
                 <Col className="column" xs="7">
                   {value.readyBattle?
                     <Cards/>:
-                    <div>hello</div>
+                    <Player/>
                   }
                 </Col>
                 <Col className="column column--nobg" xs="2">

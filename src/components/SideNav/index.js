@@ -33,7 +33,7 @@ const Index = () => {
 
             <div
                 className="sidenav__counter d-flex flex-column align-items-center justify-content-center">
-                <span className="counter__tag">Cards</span>
+                <span className="counter__tag">{value.readyBattle?"Cards":"Players"}</span>
                 <span className="counter__data">{value
                         .cards
                         .length.toLocaleString('en-US', {
