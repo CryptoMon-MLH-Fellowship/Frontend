@@ -34,6 +34,8 @@ function Packet (){
 
        
         </div>
+        </center>
+        <center>
 
         <div class="spread-cards">
             <Spreadcards />
