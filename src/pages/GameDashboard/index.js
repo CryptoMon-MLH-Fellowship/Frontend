@@ -9,6 +9,7 @@ import SideNav from '../../components/SideNav/index'
 import {GameContext} from '../../context/GameContext'
 
 import CardsBox from '../../components/cardsBox/packet/index' 
+import Login from '../login'
 
 const GameDashboard = (prop) => {
     const value = useContext(GameContext)
@@ -32,6 +33,11 @@ const GameDashboard = (prop) => {
             <Row>
                 <CardsBox />
             </Row>
+
+            <Row>
+                <Login />
+            </Row>
+            
         </Container>
     )
 }
