@@ -5,7 +5,7 @@ import defaultAvatar from '../../assets/loginPokemon.png'
 function Login (){
     return (
         <>
-
+        
         <div class="login-box">
             <div class="defaultAvatar">
                 <img src={defaultAvatar} class="defaultAvatar" alt="defaultPikachu" />
