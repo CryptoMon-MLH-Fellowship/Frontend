@@ -1,4 +1,4 @@
-.login-box{
+.signup-box{
     box-sizing: border-box;
     background-color: #FFF756;
     height: 504px;
@@ -11,7 +11,7 @@
     margin-top: 50px;
 }
 
-.defaultAvatar{
+.signUpAvatar{
     text-align: center;
     padding: 20px;
 }
@@ -56,6 +56,10 @@ button{
 }
 .button{
     border-color: #FF9F00;
+    
+}
+.button:hover{
+    text-decoration: none;
 }
 .login-button{
     margin-top: 30px;

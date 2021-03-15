@@ -1,17 +1,29 @@
 import React from 'react';
-import './style.css';
-import defaultAvatar from '../../assets/loginPokemon.png'
-import SignUp from './signUp/signUp.js'
+import './signup.css';
+import signUpAvatar from '../../../assets/SignUpAvatar.png'
+import loginScreen from '../index'
 
-function Login (){
+
+function SignUp (){
     return (
         <>
         
-        <div class="login-box">
-            <div class="defaultAvatar">
-                <img src={defaultAvatar} class="defaultAvatar" alt="defaultPikachu" />
+        <div class="signup-box">
+            <div class="signUpAvatar">
+                <img src={signUpAvatar} class="signUpAvatar" alt="signUpAvatar" />
             </div>
             <div class="credentials">
+
+            <div class="Name">
+                <text>
+                    Name
+                </text>
+                <div class="form-input">
+                    <input type="text" name="name" placeholder="Enter Your Name"></input>
+                </div>
+
+
+            </div>
             <div class="UserId">
                 <text>
                     User Id
@@ -36,20 +48,21 @@ function Login (){
 
             <div class="buttons">
                 <div class="login-button">
+                    <a href={loginScreen}>
                     <button class="button">LOGIN</button>
+                    </a>
                 </div>
             </div>
             
             <div class="buttons">
                 
                 <div class="signup-button">
-                    <a  href="./signUp/signUp.js">
                     <button class="button">SIGN UP</button>
-                    </a>
                 </div>
                 
 
             </div>
+
             
         </div>
 
@@ -58,4 +71,4 @@ function Login (){
     )
 }
 
-export default Login;
+export default SignUp;
