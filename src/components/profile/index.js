@@ -10,7 +10,7 @@ const Index = () => {
 			<div className="profile">
 				<img className="profile__image" src={value.player[0]?.avatar}></img>
 			</div>
-			<div className="profile__name mt-3 ">{value.player[0]?.name}</div>
+			<div className="profile__name mt-3 ">{value.player[0]?.name.split(" ")[0]}</div>
 		</div>
 	);
 };
