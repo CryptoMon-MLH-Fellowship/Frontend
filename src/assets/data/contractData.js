@@ -1,4 +1,4 @@
-export const address = "0xbeb745D6504E4d22B3A25f4751e0e56a15dE9654";
+export const address = "0xf6fDeD4DF92F79c8Cf0357E913bC64CcF58aC99B";
 export const abi = [
 	{
 		constant: false,
@@ -474,6 +474,11 @@ export const abi = [
 		name: "cryptoMons",
 		outputs: [
 			{
+				internalType: "uint256",
+				name: "id",
+				type: "uint256",
+			},
+			{
 				internalType: "string",
 				name: "name",
 				type: "string",
@@ -551,6 +556,11 @@ export const abi = [
 		outputs: [
 			{
 				components: [
+					{
+						internalType: "uint256",
+						name: "id",
+						type: "uint256",
+					},
 					{
 						internalType: "string",
 						name: "name",

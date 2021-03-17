@@ -11,7 +11,7 @@ function Login() {
 
 	const handleRegister = async () => {
 		setMessage("Loading...");
-		value.contract[0].events.NewCryptoMon({ filter: { _player: value.account[0] } }, async (err, event) => {
+		value.contract[0].events.NewCryptoMon({ filter: { _player: value.account[0] } }, (err, event) => {
 			if (err) {
 				console.error("An error has occurred!", err);
 				return;
