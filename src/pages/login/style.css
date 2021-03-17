@@ -1,62 +1,69 @@
-.login-box{
-    box-sizing: border-box;
-    background-color: #FFF756;
-    height: 504px;
-    width: 350px;
-    left: 545px;
-    top: 32px;
-    border-radius: 8px;
-    border-color: #FF9F00;
-    margin-left: 450px;
-    margin-top: 50px;
+.login-box {
+  box-sizing: border-box;
+  background-color: #fff756;
+  /* height: 504px; */
+  width: 350px;
+  left: 545px;
+  top: 32px;
+  border-radius: 8px;
+  border-color: #ff9f00;
+  margin-left: 450px;
+  margin-top: 50px;
+  padding: 20px;
 }
 
-.defaultAvatar{
-    text-align: center;
-    padding: 20px;
+.defaultAvatar {
+  text-align: center;
+  /* padding: 20px; */
 }
 
-.credentials{
-    margin-left: 20px;
+.credentials {
+  margin-left: 20px;
 }
 
-text{
-    color: #FFCD0C;
-    font-family: Heebo;
-    font-weight: 500;
-    margin-left: 10px;
-    margin-top: 1.5rem;
-    margin-bottom: 0;
+text {
+  color: #ffcd0c;
+  font-family: Heebo;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
 }
 
-input{
-    padding: 0 0 0 0;
-    border-color: #FF9F00 100%;
-    background-color: #FECB0F;
-    border-radius: 8px;
-    border-style: solid;
-    border-color: orange;
+input {
+  padding: 0 0 0 0;
+  width: 95%;
+  border-color: #ff9f00 100%;
+  background-color: #fecb0f;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: orange;
 }
-::placeholder{
-    color: aliceblue;  
-    padding: 6px;
+::placeholder {
+  color: aliceblue;
+  padding: 6px;
 }
 
-button{
-    text-align: center;
-    max-height: 11px;
-    max-width: 150px;
-    border-radius: 8px;
-    /*padding: 4px, 4px, 8px, 4px;*/
-    margin-top: 6px;
-    margin-left: 22px;
+.button {
+  text-align: center;
+  /* max-height: 11px; */
+  /* max-width: 150px; */
+  border-radius: 8px;
+  width: 100%;
+  display: block;
+  margin: auto;
+  /*padding: 4px, 4px, 8px, 4px;*/
+  margin-top: 20px;
+  /* margin-top: 6px;
+  margin-left: 22px; */
 }
-.buttons{
-    margin: 20px;
+
+.buttons {
+  /* margin: 20px; */
 }
-.button{
-    border-color: #FF9F00;
+.button {
+  border-color: #ff9f00;
 }
-.login-button{
-    margin-top: 30px;
+.login-button {
+  /* margin-top: 30px; */
 }

@@ -1,61 +1,57 @@
-import React from 'react';
-import './style.css';
-import defaultAvatar from '../../assets/loginPokemon.png'
-import SignUp from './signUp/signUp.js'
+import React, { useContext, useState } from "react";
+import "./style.css";
+import defaultAvatar from "../../assets/loginPokemon.png";
+import SignUp from "./signUp/signUp.js";
+import { GameContext } from "../../context/GameContext";
 
-function Login (){
-    return (
-        <>
-        
-        <div class="login-box">
-            <div class="defaultAvatar">
-                <img src={defaultAvatar} class="defaultAvatar" alt="defaultPikachu" />
-            </div>
-            <div class="credentials">
-            <div class="UserId">
-                <text>
-                    User Id
-                </text>
+function Login() {
+	const value = useContext(GameContext);
+	const [name, setName] = useState();
+	const [message, setMessage] = useState("SIGN UP");
 
-                <div class="form-input">
-                    <input type="text" name="userid" placeholder="Enter User Id"></input>
-                </div>
+	const handleRegister = async () => {
+		setMessage("Loading...");
+		value.contract[0].events.NewCryptoMon({ filter: { _player: value.account[0] } }, async (err, event) => {
+			if (err) {
+				console.error("An error has occurred!", err);
+				return;
+			}
+			console.log("EVENT", event);
+			value.registered[1](true);
+		});
+		const receipt = await value.contract[0].methods
+			.createUser(name, `https://avatars.dicebear.com/api/male/${name.split(" ")[0]}.svg?background=%230000ff`)
+			.send({ from: value.account[0] });
+	};
 
-            </div>
+	return (
+		<>
+			<div class="login-box">
+				<div class="defaultAvatar">
+					<img src={defaultAvatar} class="defaultAvatar" alt="defaultPikachu" />
+				</div>
+				<div class="credentials">
+					<div class="UserId">
+						<text>Name</text>
 
-            <div class="Password">
-                <text>
-                    Password
-                </text>
+						<div class="form-input">
+							<input
+								type="text"
+								name="name"
+								placeholder="Enter Name"
+								value={name}
+								onChange={({ target: { value } }) => setName(value)}
+							></input>
+						</div>
+					</div>
+				</div>
 
-                <div class="form-input">
-                    <input type="text" name="passwd" placeholder="Enter Password"></input>
-                </div>
-            </div>
-            </div>
-
-            <div class="buttons">
-                <div class="login-button">
-                    <button class="button">LOGIN</button>
-                </div>
-            </div>
-            
-            <div class="buttons">
-                
-                <div class="signup-button">
-                    <a  href="./signUp/signUp.js">
-                    <button class="button">SIGN UP</button>
-                    </a>
-                </div>
-                
-
-            </div>
-            
-        </div>
-
-
-        </>
-    )
+				<button class="button" onClick={handleRegister}>
+					{message}
+				</button>
+			</div>
+		</>
+	);
 }
 
 export default Login;

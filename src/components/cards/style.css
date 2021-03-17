@@ -19,6 +19,11 @@
   transform-origin: 50% 50%;
   transform: translate3d(0%, 0%, -400px);
 }
+
+.shiny {
+  background-color: orange !important;
+}
+
 .card:hover {
   z-index: 2;
 }
@@ -30,28 +35,36 @@
 .card.mewtwo {
   background-image: url(https://images.pokemontcg.io/xy12/52_hires.png);
 }
-.card.mewtwo:before, .card.mewtwo:after {
+.card.mewtwo:before,
+.card.mewtwo:after {
   -webkit-animation-delay: 0.33s;
-          animation-delay: 0.33s;
+  animation-delay: 0.33s;
 }
 
 .card.dragonite {
   background-image: url(https://images.pokemontcg.io/xy12/72_hires.png);
 }
-.card.dragonite:before, .card.dragonite:after {
+.card.dragonite:before,
+.card.dragonite:after {
   -webkit-animation-delay: 0.66s;
-          animation-delay: 0.66s;
+  animation-delay: 0.66s;
 }
 
 .card:before,
 .card:after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
-  background-image: linear-gradient(115deg, transparent 0%, #00e7ff 30%, #ff00e7 70%, transparent 100%);
+  background-image: linear-gradient(
+    115deg,
+    transparent 0%,
+    #00e7ff 30%,
+    #ff00e7 70%,
+    transparent 100%
+  );
   background-position: 0% 0%;
   background-repeat: no-repeat;
   background-size: 300% 300%;
@@ -60,26 +73,34 @@
   z-index: 1;
   transform: translate3d(0, 0, 0);
   -webkit-animation: holoGradient 15s ease infinite;
-          animation: holoGradient 15s ease infinite;
+  animation: holoGradient 15s ease infinite;
 }
 
 .card:after {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif");
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif');
   background-position: center;
   background-size: 180%;
   mix-blend-mode: color-dodge;
   opacity: 0;
   z-index: 2;
   -webkit-animation: holoSparkle 20s ease infinite;
-          animation: holoSparkle 20s ease infinite;
+  animation: holoSparkle 20s ease infinite;
 }
 
 .card.active:before {
   opacity: 0.5;
   -webkit-animation: none;
-          animation: none;
+  animation: none;
   transition: none;
-  background-image: linear-gradient(115deg, transparent 0%, transparent 25%, #00e7ff 45%, #ff00e7 55%, transparent 70%, transparent 100%);
+  background-image: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 25%,
+    #00e7ff 45%,
+    #ff00e7 55%,
+    transparent 70%,
+    transparent 100%
+  );
 }
 
 @-webkit-keyframes holoSparkle {
@@ -168,14 +189,15 @@
   }
 }
 
-.card__name{
+.card__name {
   font-size: 16px;
   color: #fff;
   font-weight: bold;
   margin: auto;
+  text-transform: capitalize;
 }
 
-.card--selected{
+.card--selected {
   border: 10px solid #00ffb2 !important;
   background: greenyellow;
 }

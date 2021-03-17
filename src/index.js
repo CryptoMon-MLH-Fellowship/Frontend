@@ -1,14 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { GameProvider } from "./context/GameContext";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<GameProvider>
+			<App />
+		</GameProvider>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 
 reportWebVitals();
