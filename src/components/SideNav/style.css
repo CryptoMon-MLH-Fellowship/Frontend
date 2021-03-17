@@ -1,0 +1,32 @@
+.sidenav{
+  height: 100%;
+}
+.sidenav__counter {
+  background: #FFF756;
+  border-radius: 8px;
+  width: 223px;
+  height: 192px;
+  position: relative;
+  left: -64px;
+}
+
+.counter__tag {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 47px;
+  /* identical to box height */
+  color: #FFCD0C;
+}
+
+.counter__data {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 106px;
+  /* identical to box height */
+  color: #FFCD0C;
+
+}
