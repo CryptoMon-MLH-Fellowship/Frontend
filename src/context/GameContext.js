@@ -11,6 +11,7 @@ export const GameProvider = (props) => {
   const [readyBattle, setReadyBattle] = useState(true)
   const [readyCard, setReadyCard] = useState(false)
   const [selectedCard, setSelectedCard] = useState({ID:null,selected:false})
+  const [cardBoxopened, setCardBoxopened] = useState(false)
 
   const openBattle = () => {
     console.log(readyBattle);
@@ -35,7 +36,8 @@ export const GameProvider = (props) => {
       readyBattle,
       readyCard,
       selectedCard:[selectedCard, setSelectedCard],
-      getSelectedCard
+      getSelectedCard,
+      cardBoxopened:[cardBoxopened, setCardBoxopened]
     }
     }
     >
