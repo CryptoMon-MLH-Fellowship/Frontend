@@ -40,7 +40,9 @@ const Dashboard = (prop) => {
 				</Col>
 			</Row>
 			<Row>
-				<CardsBox />
+				{value.cardBoxopened[0] ? null : (
+					<CardsBox cardBoxopened={value.cardBoxopened[0]} setCardBoxopened={value.cardBoxopened[1]} />
+				)}
 			</Row>
 		</>
 	);

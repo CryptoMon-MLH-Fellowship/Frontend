@@ -14,6 +14,7 @@ export const GameProvider = (props) => {
 	const [cards, setCards] = useState([]);
 	const [readyBattle, setReadyBattle] = useState(true);
 	const [readyCard, setReadyCard] = useState(false);
+	const [cardBoxopened, setCardBoxopened] = useState(false);
 	const [selectedCard, setSelectedCard] = useState({ ID: null, selected: false });
 
 	const openBattle = async () => {
@@ -54,6 +55,7 @@ export const GameProvider = (props) => {
 				readyCard,
 				selectedCard: [selectedCard, setSelectedCard],
 				getSelectedCard,
+				cardBoxopened: [cardBoxopened, setCardBoxopened],
 			}}
 		>
 			{props.children}
