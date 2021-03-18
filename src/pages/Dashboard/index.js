@@ -30,7 +30,7 @@ const Dashboard = (prop) => {
 	}, []);
 
 	return (
-		<>
+		<Container>
 			<Row className="flex-nowrap">
 				<Col className="column profile-column" xs="3">
 					<Avatar />
@@ -48,7 +48,7 @@ const Dashboard = (prop) => {
 					<CardsBox cardBoxopened={value.cardBoxopened[0]} setCardBoxopened={value.cardBoxopened[1]} />
 				)}
 			</Row>
-		</>
+		</Container>
 	);
 };
 

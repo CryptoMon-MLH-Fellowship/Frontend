@@ -20,7 +20,7 @@ function Login() {
 			value.registered[1](true);
 		});
 		const receipt = await value.contract[0].methods
-			.createUser(name, `https://avatars.dicebear.com/api/male/${name.split(" ")[0]}.svg?background=%230000ff`)
+			.createUser(name, `https://avatars.dicebear.com/api/male/${name.split(" ")[0]}.svg?background=%23CFFF9B`)
 			.send({ from: value.account[0] });
 	};
 

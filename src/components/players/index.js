@@ -158,7 +158,7 @@ const Index = () => {
 					<Modal.Title id="contained-modal-title-vcenter">Awaiting response!</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<p>You have successfully challenged {selectedPlayer.name}</p>
+					<p>You have successfully challenged {selectedPlayer?.name}</p>
 				</Modal.Body>
 				<Modal.Footer>
 					<Button onClick={() => setModalShow(false)} className="modal_button">

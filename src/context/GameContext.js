@@ -37,8 +37,10 @@ export const GameProvider = (props) => {
 	};
 
 	const getSelectedCard = (cardId) => {
-		setSelectedCard({ ID: cardId, selected: true });
-		console.log(selectedCard);
+		console.log(cardId);
+		cards.map((item,index)=>item.pokemonId == cardId?setSelectedCard({ ID: cardId, selected: true, shiny:item.shiny, name:item.name, xp:item.xp }):null
+		)
+		
 	};
 
 	return (

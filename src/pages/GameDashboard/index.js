@@ -12,20 +12,24 @@ import { GameContext } from "../../context/GameContext";
 
 import CardsBox from "../../components/cardsBox/packet/index";
 import Login from "../login";
+import Battle from "../battle/index";
 
 const GameDashboard = (prop) => {
 	const value = useContext(GameContext);
 
 	return (
-		<Container>
+		<>
 			{value.registered[0] ? (
-				<Dashboard />
+                <>
+                {/* <Dashboard /> */}
+                <Battle/>
+                </>
 			) : (
 				<Row>
 					<Login />
 				</Row>
 			)}
-		</Container>
+		</>
 	);
 };
 

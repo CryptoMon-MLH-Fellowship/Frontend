@@ -20,7 +20,7 @@ const Index = () => {
 			<div className="monCards d-flex justify-content-center align-items-center flex-wrap mt-4">
 				{value.cards[0].map((item, index) => {
 					return (
-						<div id={item.id} className={`card monCard ${item.shiny ? "shiny" : null}`} onClick={sendCard}>
+						<div id={item.pokemonId} className={`card monCard ${item.shiny ? "shiny" : null}`} onClick={sendCard}>
 							<img
 								className="m-4"
 								src={`https://pokeres.bastionbot.org/images/pokemon/${item.pokemonId}.png`}
