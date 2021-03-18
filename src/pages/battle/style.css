@@ -9,6 +9,33 @@ width: fit-content;
     height: 500px;
 }
 
+.profile {
+  width: 160px;
+  height: 160px;
+  background: #cfff9b;
+}
+
+.profile__image {
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+}
+
+.profile__name {
+  width: 160px;
+  height: 47px;
+  left: 213px;
+  background: #ffcd0c;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 47px;
+  color: #ffffff;
+  text-align: center;
+}
+
+
 .profile__name {
     width: 160px;
     height: 47px;

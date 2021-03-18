@@ -20,10 +20,11 @@ const GameDashboard = (prop) => {
 	return (
 		<>
 			{value.registered[0] ? (
-                <>
-                {/* <Dashboard /> */}
-                <Battle/>
-                </>
+				value.battleInProgress[0] ? (
+					<Battle />
+				) : (
+					<Dashboard />
+				)
 			) : (
 				<Row>
 					<Login />

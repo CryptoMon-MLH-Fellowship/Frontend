@@ -11,6 +11,7 @@ const Index = () => {
 	const [selectedPlayer, setSelectedPlayer] = useState();
 
 	const [challenger, setChallenger] = useState();
+	const [receivedMon, setReceivedMon] = useState();
 	const [acceptModalShow, setAcceptModalShow] = useState(false);
 
 	useEffect(() => {
@@ -25,6 +26,7 @@ const Index = () => {
 				const challenger = await value.contract[0].methods.players(challengerAddress).call();
 
 				setChallenger({ ...challenger, address: challengerAddress });
+				setReceivedMon(event.returnValues._monId);
 				setAcceptModalShow(true);
 			} catch (err) {
 				console.error("An error has occurred!", err);
@@ -76,6 +78,18 @@ const Index = () => {
 							return;
 						}
 						console.log("ACCEPTED!", event.returnValues);
+						const [challengerMon, opponentMon] = await Promise.all([
+							value.contract[0].methods.cryptoMons(event.returnValues._challengerMon).call(),
+							value.contract[0].methods.cryptoMons(event.returnValues._opponentMon).call(),
+						]);
+
+						value.battleDetails[1]({
+							challenger: { ...value.player[0], address: value.account[0] },
+							opponent: opponent,
+							challengerMon,
+							opponentMon,
+						});
+						value.battleInProgress[1](true);
 					} catch (err) {
 						console.error("An error has occurred!", err);
 						return;
@@ -83,21 +97,21 @@ const Index = () => {
 				}
 			);
 
-			value.contract[0].events.AnnounceWinner(
-				{ filter: { _challengeHash: challengeHash } },
-				async (err, event) => {
-					try {
-						if (err) {
-							console.error("An error has occurred!", err);
-							return;
-						}
-						console.log("ANNOUNCED!", event.returnValues);
-					} catch (err) {
-						console.error("An error has occurred!", err);
-						return;
-					}
-				}
-			);
+			// value.contract[0].events.AnnounceWinner(
+			// 	{ filter: { _challengeHash: challengeHash } },
+			// 	async (err, event) => {
+			// 		try {
+			// 			if (err) {
+			// 				console.error("An error has occurred!", err);
+			// 				return;
+			// 			}
+			// 			console.log("ANNOUNCED!", event.returnValues);
+			// 		} catch (err) {
+			// 			console.error("An error has occurred!", err);
+			// 			return;
+			// 		}
+			// 	}
+			// );
 
 			await value.contract[0].methods
 				.challenge(opponent.address, value.cardForBattle[0])
@@ -110,25 +124,38 @@ const Index = () => {
 	const accept = async () => {
 		try {
 			const challengeHash = soliditySha3(challenger, value.account[0]);
-			value.contract[0].events.AnnounceWinner(
-				{ filter: { _challengeHash: challengeHash } },
-				async (err, event) => {
-					try {
-						if (err) {
-							console.error("An error has occurred!", err);
-							return;
-						}
-						console.log(event.returnValues);
-					} catch (err) {
-						console.error("An error has occurred!", err);
-						return;
-					}
-				}
-			);
-			console.log(challenger.address);
+			// value.contract[0].events.AnnounceWinner(
+			// 	{ filter: { _challengeHash: challengeHash } },
+			// 	async (err, event) => {
+			// 		try {
+			// 			if (err) {
+			// 				console.error("An error has occurred!", err);
+			// 				return;
+			// 			}
+			// 			console.log(event.returnValues);
+			// 		} catch (err) {
+			// 			console.error("An error has occurred!", err);
+			// 			return;
+			// 		}
+			// 	}
+			// );
 			await value.contract[0].methods
 				.accept(challenger.address, value.cardForBattle[0])
 				.send({ from: value.account[0] });
+
+			const [challengerMon, opponentMon] = await Promise.all([
+				value.contract[0].methods.cryptoMons(receivedMon).call(),
+				value.contract[0].methods.cryptoMons(value.cardForBattle[0]).call(),
+			]);
+
+			value.battleDetails[1]({
+				challenger,
+				opponent: { ...value.player[0], address: value.account[0] },
+				challengerMon,
+				opponentMon,
+			});
+
+			value.battleInProgress[1](true);
 		} catch (err) {
 			throw err;
 		}

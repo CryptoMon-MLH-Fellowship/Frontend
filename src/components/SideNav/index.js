@@ -46,7 +46,7 @@ const Index = () => {
 			<div className="sidenav__counter d-flex flex-column align-items-center justify-content-center">
 				<span className="counter__tag">{value.readyBattle ? "Cards" : "Players"}</span>
 				<span className="counter__data">
-					{value.readyBattle ? value.cards[0].length : value.challengeReadyPlayers[0].length - 1}
+					{value.readyBattle ? value.cards[0].length : Math.max(0, value.challengeReadyPlayers[0].length - 1)}
 				</span>
 			</div>
 

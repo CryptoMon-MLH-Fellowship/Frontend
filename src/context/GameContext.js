@@ -18,6 +18,13 @@ export const GameProvider = (props) => {
 	const [selectedCard, setSelectedCard] = useState({ ID: null, selected: false });
 	const [cardForBattle, setCardForBattle] = useState(-1);
 	const [challengeReadyPlayers, setChallengeReadyPlayers] = useState([]);
+	const [battleInProgress, setBattleInProgress] = useState(false);
+	const [battleDetails, setBattleDetails] = useState({
+		challenger: null,
+		opponent: null,
+		challengerMon: null,
+		opponentMon: null,
+	});
 
 	const openBattle = async () => {
 		console.log(player.challengeReady);
@@ -38,9 +45,11 @@ export const GameProvider = (props) => {
 
 	const getSelectedCard = (cardId) => {
 		console.log(cardId);
-		cards.map((item,index)=>item.pokemonId == cardId?setSelectedCard({ ID: cardId, selected: true, shiny:item.shiny, name:item.name, xp:item.xp }):null
-		)
-		
+		cards.map((item, index) =>
+			item.pokemonId == cardId
+				? setSelectedCard({ ID: cardId, selected: true, shiny: item.shiny, name: item.name, xp: item.xp })
+				: null
+		);
 	};
 
 	return (
@@ -62,6 +71,8 @@ export const GameProvider = (props) => {
 				cardBoxopened: [cardBoxopened, setCardBoxopened],
 				cardForBattle: [cardForBattle, setCardForBattle],
 				challengeReadyPlayers: [challengeReadyPlayers, setChallengeReadyPlayers],
+				battleInProgress: [battleInProgress, setBattleInProgress],
+				battleDetails: [battleDetails, setBattleDetails],
 			}}
 		>
 			{props.children}
