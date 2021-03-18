@@ -4,11 +4,11 @@
   /* height: 504px; */
   width: 350px;
   left: 545px;
-  top: 32px;
+  /* bottom: 0px; */
   border-radius: 8px;
   border-color: #ff9f00;
-  margin-left: 450px;
-  margin-top: 50px;
+  margin: auto;
+  margin-top: 100px;
   padding: 20px;
 }
 

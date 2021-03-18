@@ -1,0 +1,195 @@
+.battle__container{
+  background: #FFF756;
+border-radius: 8px;
+width: fit-content;
+}
+
+.PlaymonCard {
+    width: 300px;
+    height: 500px;
+}
+
+.profile {
+  width: 160px;
+  height: 160px;
+  background: #cfff9b;
+}
+
+.profile__image {
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+}
+
+.profile__name {
+  width: 160px;
+  height: 47px;
+  left: 213px;
+  background: #ffcd0c;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 47px;
+  color: #ffffff;
+  text-align: center;
+}
+
+
+.profile__name {
+    width: 160px;
+    height: 47px;
+    background: #FFCD0C;
+    border-radius: 8px;
+}
+
+.play__card--size{
+  font-size: 48px;
+}
+
+.win{
+  position: absolute;
+  background: linear-gradient(0deg, rgba(207, 255, 155, 0.8), rgba(207, 255, 155, 0.8));
+  height: 100%;
+
+  width: 100%;
+}
+
+.loose{
+  position: absolute;
+  background: linear-gradient(0deg, rgba(255, 87, 105, 0.6), rgba(255, 87, 105, 0.6));
+  height: 100%;
+
+  width: 100%;
+}
+
+.win__img{
+  object-fit: none;
+}
+
+.win p{
+  font-family: Heebo;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 70px;
+    color: #287B51;
+    text-align: center;
+}
+
+@font-face {
+  font-family: "Pokemon GB";
+  src: url("https://cdn.rawgit.com/Superpencil/pokemon-font/d36892e5/fonts/pokemon-font.eot");
+  src: url("https://cdn.rawgit.com/Superpencil/pokemon-font/d36892e5/fonts/pokemon-font.woff");
+  font-weight: 400;
+}
+
+.color-controls {
+  position: absolute;
+  z-index: 99;
+  left: 50%;
+  bottom: 0.75rem;
+  min-width: 37.5rem;
+  width: max-content;
+  margin-top: 1.25rem;
+  transform: translateX(-50%);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: double 0.75rem #555;
+  box-shadow: inset 0 0.25rem 0 #555, 0 0.25rem 0 #555;
+  background-color: var(--base-color);
+  color: #555;
+}
+.color-controls p {
+  font-family: "Pokemon GB", monospace;
+  font-weight: 400;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+
+
+
+.color-controls-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.dot-pulse {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #fff756;
+  color: #fff756;
+  box-shadow: 9999px 0 0 -5px #fff756;
+  animation: dotPulse 1.5s infinite linear;
+  animation-delay: .25s;
+}
+
+.dot-pulse::before, .dot-pulse::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #fff756;
+  color: #fff756;
+}
+
+.dot-pulse::before {
+  box-shadow: 9984px 0 0 -5px #fff756;
+  animation: dotPulseBefore 1.5s infinite linear;
+  animation-delay: 0s;
+}
+
+.dot-pulse::after {
+  box-shadow: 10014px 0 0 -5px #fff756;
+  animation: dotPulseAfter 1.5s infinite linear;
+  animation-delay: .5s;
+}
+
+@keyframes dotPulseBefore {
+  0% {
+    box-shadow: 9984px 0 0 -5px #fff756;
+  }
+  30% {
+    box-shadow: 9984px 0 0 2px #fff756;
+  }
+  60%,
+  100% {
+    box-shadow: 9984px 0 0 -5px #fff756;
+  }
+}
+
+@keyframes dotPulse {
+  0% {
+    box-shadow: 9999px 0 0 -5px #fff756;
+  }
+  30% {
+    box-shadow: 9999px 0 0 2px #fff756;
+  }
+  60%,
+  100% {
+    box-shadow: 9999px 0 0 -5px #fff756;
+  }
+}
+
+@keyframes dotPulseAfter {
+  0% {
+    box-shadow: 10014px 0 0 -5px #fff756;
+  }
+  30% {
+    box-shadow: 10014px 0 0 2px #fff756;
+  }
+  60%,
+  100% {
+    box-shadow: 10014px 0 0 -5px #fff756;
+  }
+}

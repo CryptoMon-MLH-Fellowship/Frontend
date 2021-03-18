@@ -1,69 +1,217 @@
-import React, {useState, useContext} from 'react'
-import {Modal, Button} from 'react-bootstrap';
-import {GameContext} from '../../context/GameContext'
-import './style.css'
+import React, { useState, useContext, useEffect } from "react";
+import { Modal, Button } from "react-bootstrap";
+import { soliditySha3 } from "web3-utils";
+import { GameContext } from "../../context/GameContext";
+import "./style.css";
 
 const Index = () => {
-    const value = useContext(GameContext)
-    const selectedCard = value.selectedCard[0].selected
-    const [modalShow,
-        setModalShow] = useState(false);
+	const value = useContext(GameContext);
+	const selectedCard = value.selectedCard[0].selected;
+	const [modalShow, setModalShow] = useState(false);
+	const [selectedPlayer, setSelectedPlayer] = useState();
 
-    const sendCard = (e) => {
+	const [challenger, setChallenger] = useState();
+	const [receivedMon, setReceivedMon] = useState();
+	const [acceptModalShow, setAcceptModalShow] = useState(false);
 
-        if (value.selectedCard[1].ID != null) {
-            document
-                .getElementById(value.selectedCard[1].ID)
-                .classList
-                .remove("card--selected")
-        }
-        value.selectedCard[1].ID = e.currentTarget.id;
-        value.getSelectedCard(value.selectedCard[1].ID)
-        document
-            .getElementById(value.selectedCard[1].ID)
-            .classList
-            .add("card--selected")
+	useEffect(() => {
+		value.contract[0].events.NewChallenge({ filter: { _opponent: value.account[0] } }, async (err, event) => {
+			try {
+				if (err) {
+					console.error("An error has occurred!", err);
+					return;
+				}
+				if (event.returnValues._opponent !== value.account[0]) return;
+				const challengerAddress = event.returnValues._challenger;
+				const challenger = await value.contract[0].methods.players(challengerAddress).call();
 
-        setModalShow(true)
-    }
-    return (
+				setChallenger({ ...challenger, address: challengerAddress });
+				setReceivedMon(event.returnValues._monId);
+				setAcceptModalShow(true);
+			} catch (err) {
+				console.error("An error has occurred!", err);
+				return;
+			}
+		});
+		value.contract[0].events.ChallengeReady(async (err, event) => {
+			try {
+				if (err) {
+					console.error("An error has occurred!", err);
+					return;
+				}
+				fetchChallengeReadyPlayers();
+			} catch (err) {
+				console.error("An error has occurred!", err);
+				return;
+			}
+		});
+		const fetchChallengeReadyPlayers = async () => {
+			const addresses = await value.contract[0].methods.getChallengeReadyPlayers().call();
+			console.log(addresses);
 
-        <div className="monCardContainer d-flex justify-content-center">
-            <div
-                className="monCards d-flex justify-content-center align-items-center flex-wrap mt-4">
-                {value
-                    .cards
-                    .map((item, index) => <div
-                        id={index}
-                        className={"playercard monCard d-flex flex-column justify-content-center align-items-center"}
-                        onClick={sendCard}>
-                        <img className="playercard__img" src={value.userAvatar}></img>
-                        <span className="playercard__name">{value.username}</span>
-                    </div>)}
-            </div>
+			const promises = addresses.map((player) => value.contract[0].methods.players(player).call());
 
-            <Modal
-                show={modalShow}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered>
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Waiting for oponent {value.selectedCard[1].ID}...
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p>
-                        TIP : Guna's algo will hopefully make you win :)
-                    </p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={() => setModalShow(false)}>Cancel</Button>
-                </Modal.Footer>
-            </Modal>
+			const players = await Promise.all(promises);
 
-        </div>
-    )
-}
+			for (let i = 0; i < players.length; ++i) {
+				players[i].address = addresses[i];
+			}
 
-export default Index
+			value.challengeReadyPlayers[1](players);
+		};
+		fetchChallengeReadyPlayers();
+	}, []);
+
+	const challenge = async (opponent) => {
+		try {
+			setSelectedPlayer(opponent);
+			setModalShow(true);
+
+			const challengeHash = soliditySha3(value.account[0], opponent.address);
+
+			value.contract[0].events.AcceptChallenge(
+				{ filter: { _challengeHash: challengeHash } },
+				async (err, event) => {
+					try {
+						if (err) {
+							console.error("An error has occurred!", err);
+							return;
+						}
+						console.log("ACCEPTED!", event.returnValues);
+						const [challengerMon, opponentMon] = await Promise.all([
+							value.contract[0].methods.cryptoMons(event.returnValues._challengerMon).call(),
+							value.contract[0].methods.cryptoMons(event.returnValues._opponentMon).call(),
+						]);
+
+						value.battleDetails[1]({
+							challenger: { ...value.player[0], address: value.account[0] },
+							opponent: opponent,
+							challengerMon,
+							opponentMon,
+						});
+						value.battleInProgress[1](true);
+					} catch (err) {
+						console.error("An error has occurred!", err);
+						return;
+					}
+				}
+			);
+
+			// value.contract[0].events.AnnounceWinner(
+			// 	{ filter: { _challengeHash: challengeHash } },
+			// 	async (err, event) => {
+			// 		try {
+			// 			if (err) {
+			// 				console.error("An error has occurred!", err);
+			// 				return;
+			// 			}
+			// 			console.log("ANNOUNCED!", event.returnValues);
+			// 		} catch (err) {
+			// 			console.error("An error has occurred!", err);
+			// 			return;
+			// 		}
+			// 	}
+			// );
+
+			await value.contract[0].methods
+				.challenge(opponent.address, value.cardForBattle[0])
+				.send({ from: value.account[0] });
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const accept = async () => {
+		try {
+			const challengeHash = soliditySha3(challenger, value.account[0]);
+			// value.contract[0].events.AnnounceWinner(
+			// 	{ filter: { _challengeHash: challengeHash } },
+			// 	async (err, event) => {
+			// 		try {
+			// 			if (err) {
+			// 				console.error("An error has occurred!", err);
+			// 				return;
+			// 			}
+			// 			console.log(event.returnValues);
+			// 		} catch (err) {
+			// 			console.error("An error has occurred!", err);
+			// 			return;
+			// 		}
+			// 	}
+			// );
+			await value.contract[0].methods
+				.accept(challenger.address, value.cardForBattle[0])
+				.send({ from: value.account[0] });
+
+			const [challengerMon, opponentMon] = await Promise.all([
+				value.contract[0].methods.cryptoMons(receivedMon).call(),
+				value.contract[0].methods.cryptoMons(value.cardForBattle[0]).call(),
+			]);
+
+			value.battleDetails[1]({
+				challenger,
+				opponent: { ...value.player[0], address: value.account[0] },
+				challengerMon,
+				opponentMon,
+			});
+
+			value.battleInProgress[1](true);
+		} catch (err) {
+			throw err;
+		}
+	};
+
+	return (
+		<div className="monCardContainer d-flex justify-content-center">
+			<div className="monCards d-flex justify-content-center align-items-center flex-wrap mt-4">
+				{value.challengeReadyPlayers[0]?.map((item, index) =>
+					item.address === value.account[0] ? null : (
+						<div
+							id={index}
+							className={`${
+								selectedPlayer?.address === item.address ? "card--selected" : null
+							} playercard monCard d-flex flex-column justify-content-center align-items-center`}
+							onClick={() => challenge(item)}
+						>
+							<img className="playercard__img" src={item.avatar}></img>
+							<span className="playercard__name">{item.name}</span>
+						</div>
+					)
+				)}
+			</div>
+
+			<Modal show={modalShow} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+				<Modal.Header>
+					<Modal.Title id="contained-modal-title-vcenter">Awaiting response!</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<p>You have successfully challenged {selectedPlayer?.name}</p>
+				</Modal.Body>
+				<Modal.Footer>
+					<Button onClick={() => setModalShow(false)} className="modal_button">
+						Cancel
+					</Button>
+				</Modal.Footer>
+			</Modal>
+
+			<Modal show={acceptModalShow} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+				<Modal.Header>
+					<Modal.Title id="contained-modal-title-vcenter">Incoming challenge!</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<p>You have been challenged by {challenger?.name}!</p>
+				</Modal.Body>
+				<Modal.Footer>
+					<Button onClick={accept} className="modal_button">
+						Accept
+					</Button>
+					<Button onClick={() => setAcceptModalShow(false)} className="modal_button">
+						Reject
+					</Button>
+				</Modal.Footer>
+			</Modal>
+		</div>
+	);
+};
+
+export default Index;

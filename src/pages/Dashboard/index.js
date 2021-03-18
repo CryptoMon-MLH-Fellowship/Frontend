@@ -15,18 +15,22 @@ const Dashboard = (prop) => {
 	const value = useContext(GameContext);
 	useEffect(() => {
 		const loadPlayer = async () => {
-			const playerData = await value.contract[0].methods.players(value.account[0]).call();
-			value.player[1](playerData);
-
-			const mons = await value.contract[0].methods.getCryptoMonsByOwner(value.account[0]).call();
-			value.cards[1](mons);
+			try {
+				const playerData = await value.contract[0].methods.players(value.account[0]).call();
+				value.player[1](playerData);
+				console.log(value.account[0]);
+				const mons = await value.contract[0].methods.getCryptoMonsByOwner(value.account[0]).call();
+				// console.log(mons);
+				value.cards[1](mons);
+			} catch (err) {
+				console.log(err);
+			}
 		};
-
 		loadPlayer();
 	}, []);
 
 	return (
-		<>
+		<Container>
 			<Row className="flex-nowrap">
 				<Col className="column profile-column" xs="3">
 					<Avatar />
@@ -44,7 +48,7 @@ const Dashboard = (prop) => {
 					<CardsBox cardBoxopened={value.cardBoxopened[0]} setCardBoxopened={value.cardBoxopened[1]} />
 				)}
 			</Row>
-		</>
+		</Container>
 	);
 };
 

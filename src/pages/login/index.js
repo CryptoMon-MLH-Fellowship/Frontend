@@ -11,7 +11,7 @@ function Login() {
 
 	const handleRegister = async () => {
 		setMessage("Loading...");
-		value.contract[0].events.NewCryptoMon({ filter: { _player: value.account[0] } }, async (err, event) => {
+		value.contract[0].events.NewCryptoMon({ filter: { _player: value.account[0] } }, (err, event) => {
 			if (err) {
 				console.error("An error has occurred!", err);
 				return;
@@ -20,7 +20,7 @@ function Login() {
 			value.registered[1](true);
 		});
 		const receipt = await value.contract[0].methods
-			.createUser(name, `https://avatars.dicebear.com/api/male/${name.split(" ")[0]}.svg?background=%230000ff`)
+			.createUser(name, `https://avatars.dicebear.com/api/male/${name.split(" ")[0]}.svg?background=%23CFFF9B`)
 			.send({ from: value.account[0] });
 	};
 
