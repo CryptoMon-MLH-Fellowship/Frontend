@@ -16,7 +16,8 @@ import Battle from "../battle/index";
 
 const GameDashboard = (prop) => {
 	const value = useContext(GameContext);
-
+	if(value.registered[0] == null)
+		return null
 	return (
 		<>
 			{value.registered[0] ? (

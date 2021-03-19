@@ -6,7 +6,7 @@ export const GameContext = createContext();
 export const GameProvider = (props) => {
 	const [contract, setContract] = useState();
 	const [account, setAccount] = useState();
-	const [registered, setRegistered] = useState(false);
+	const [registered, setRegistered] = useState(null);
 	const [player, setPlayer] = useState();
 	const [username, setUsername] = useState("Dev");
 	const [userAvatar, setUserAvatar] = useState(Avatar);
