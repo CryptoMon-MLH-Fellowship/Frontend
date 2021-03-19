@@ -33,4 +33,5 @@
   order: 0;
   flex-grow: 0;
   margin: 10px 0px;
+  cursor: pointer;
 }
