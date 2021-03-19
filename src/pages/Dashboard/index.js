@@ -13,7 +13,12 @@ import "./style.css";
 
 const Dashboard = (prop) => {
 	const value = useContext(GameContext);
-	useEffect(() => {
+	useEffect(() => { 
+		const cardOpenState = localStorage.getItem("cardBoxopened")
+		console.log("Local storage state: ", cardOpenState)
+		if(cardOpenState) value.cardBoxopened[1](true)
+		else localStorage.setItem("cardBoxopened", true)
+
 		const loadPlayer = async () => {
 			try {
 				const playerData = await value.contract[0].methods.players(value.account[0]).call();
